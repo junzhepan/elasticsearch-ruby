@@ -48,7 +48,6 @@ module Elasticsearch
           valid_params = [
             :metric,
             :index_metric,
-            :node_id,
             :completion_fields,
             :fielddata_fields,
             :fields,
@@ -67,7 +66,7 @@ module Elasticsearch
                                    Utils.__listify(arguments.delete(:metric)),
                                    Utils.__listify(arguments.delete(:index_metric))
 
-          params = Utils.__validate_and_extract_params arguments, valid_params.delete(:node_id)
+          params = Utils.__validate_and_extract_params arguments, valid_params
 
           [:completion_fields, :fielddata_fields, :fields, :groups, :types].each do |key|
             params[key] = Utils.__listify(params[key]) if params[key]
